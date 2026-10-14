@@ -29,14 +29,9 @@ Docision unifies document tasks through one simple interaction: Your Document. Y
 
 ## 🎯 Document decisions beyond a 27B model—higher speed, higher accuracy.
 
-<div align="center">
-
-<table width="100%" align="center" border="1" cellspacing="0" cellpadding="8" style="width: 100%; border-collapse: collapse; border: 1px solid #888;">
-  <thead><tr><th width="33%" style="border: 1px solid #888; text-align: center;" align="center">Benchmark</th><th width="33%" style="border: 1px solid #888; text-align: center;" align="center">Link</th><th width="34%" style="border: 1px solid #888; text-align: center;" align="center">Count</th></tr></thead>
-  <tbody><tr><td style="border: 1px solid #888; text-align: center;" align="center">doc-decision-bench</td><td style="border: 1px solid #888; text-align: center;" align="center">🤗 <a href="https://huggingface.co/datasets/SoMarkAI/doc-decision-bench">Hugging Face</a></td><td style="border: 1px solid #888; text-align: center;" align="center">5,234 document records</td></tr></tbody>
-</table>
-
-</div>
+<p align="center">
+  <a href="https://huggingface.co/datasets/SoMarkAI/doc-decision-bench"><img src="assets/benchmark-table.en.svg" alt="doc-decision-bench: 5,234 document records. Open on Hugging Face." width="100%"></a>
+</p>
 
 Covers **document understanding and decisions, and cross-industry classification**, with higher speed and quality.
 
@@ -49,14 +44,9 @@ Covers **document understanding and decisions, and cross-industry classification
 
 ## 🤗 Find our model here
 
-<div align="center">
-
-<table width="100%" align="center" border="1" cellspacing="0" cellpadding="8" style="width: 100%; border-collapse: collapse; border: 1px solid #888;">
-  <thead><tr><th width="50%" style="border: 1px solid #888; text-align: center;" align="center">Try our model</th><th width="50%" style="border: 1px solid #888; text-align: center;" align="center">Link</th></tr></thead>
-  <tbody><tr><td style="border: 1px solid #888; text-align: center;" align="center">Docision-1.0</td><td style="border: 1px solid #888; text-align: center;" align="center">🤗 <a href="https://huggingface.co/SoMarkAI/Docision-1.0">Hugging Face</a></td></tr></tbody>
-</table>
-
-</div>
+<p align="center">
+  <a href="https://huggingface.co/SoMarkAI/Docision-1.0"><img src="assets/model-table.en.svg" alt="Docision-1.0: Open the model on Hugging Face." width="100%"></a>
+</p>
 
 <a id="start"></a>
 

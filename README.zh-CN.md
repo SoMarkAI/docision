@@ -30,14 +30,9 @@ Docision 将不同的文档任务统一为一种简单的交互方式：Your Doc
 
 ## 🎯 文档决策，超越27B模型--更快的速度，更高的准确率。
 
-<div align="center">
-
-<table width="100%" align="center" border="1" cellspacing="0" cellpadding="8" style="width: 100%; border-collapse: collapse; border: 1px solid #888;">
-  <thead><tr><th width="33%" style="border: 1px solid #888; text-align: center;" align="center">Benchmark</th><th width="33%" style="border: 1px solid #888; text-align: center;" align="center">链接</th><th width="34%" style="border: 1px solid #888; text-align: center;" align="center">数量</th></tr></thead>
-  <tbody><tr><td style="border: 1px solid #888; text-align: center;" align="center">doc-decision-bench</td><td style="border: 1px solid #888; text-align: center;" align="center">🤗 <a href="https://huggingface.co/datasets/SoMarkAI/doc-decision-bench">Hugging Face</a></td><td style="border: 1px solid #888; text-align: center;" align="center">5,234条文档数据</td></tr></tbody>
-</table>
-
-</div>
+<p align="center">
+  <a href="https://huggingface.co/datasets/SoMarkAI/doc-decision-bench"><img src="assets/benchmark-table.zh-cn.svg" alt="doc-decision-bench：5,234 条文档数据，点击访问 Hugging Face" width="100%"></a>
+</p>
 
 覆盖**文档理解与决策、跨行业分类**，更快的速度，更高的质量。
 
@@ -50,14 +45,9 @@ Docision 将不同的文档任务统一为一种简单的交互方式：Your Doc
 
 ## 🤗模型在这里
 
-<div align="center">
-
-<table width="100%" align="center" border="1" cellspacing="0" cellpadding="8" style="width: 100%; border-collapse: collapse; border: 1px solid #888;">
-  <thead><tr><th width="50%" style="border: 1px solid #888; text-align: center;" align="center">试试我们的模型</th><th width="50%" style="border: 1px solid #888; text-align: center;" align="center">链接</th></tr></thead>
-  <tbody><tr><td style="border: 1px solid #888; text-align: center;" align="center">Docision-1.0</td><td style="border: 1px solid #888; text-align: center;" align="center">🤗 <a href="https://huggingface.co/SoMarkAI/Docision-1.0">Hugging Face</a></td></tr></tbody>
-</table>
-
-</div>
+<p align="center">
+  <a href="https://huggingface.co/SoMarkAI/Docision-1.0"><img src="assets/model-table.zh-cn.svg" alt="Docision-1.0：点击访问 Hugging Face 模型" width="100%"></a>
+</p>
 
 <a id="start"></a>
 
