@@ -114,4 +114,4 @@ docision mcp --api-url http://127.0.0.1:7860 \
 
 桥接连接已启动的 Docision 模型服务。文档和导出路径位于 MCP 主机，模型运行在服务主机上。前置配置与远端 GPU 连接方式见 [MCP 接入说明](docs/python-package.zh-CN.md#mcp)。
 
-<p align="center"><a href="LICENSE">Apache-2.0</a> — 基于 Apache 2.0 的自定义许可证。</p>
+<p align="center"><a href="LICENSE">Apache-2.0</a></p>

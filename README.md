@@ -114,4 +114,4 @@ docision mcp --api-url http://127.0.0.1:7860 \
 
 The bridge connects to a running Docision model service. Document and export paths belong to the MCP host; the model runs on the service host. See the [MCP setup instructions](docs/python-package.md#mcp) for prerequisites and remote GPU connections.
 
-<p align="center"><a href="LICENSE">Apache-2.0</a> — A custom license based on Apache 2.0.</p>
+<p align="center"><a href="LICENSE">Apache-2.0</a></p>
