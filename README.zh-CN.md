@@ -7,7 +7,7 @@
 <p align="center"><a href="README.md">English</a> &nbsp;  &nbsp; <b>简体中文</b></p>
 <p align="center">
   <a href="https://huggingface.co/SoMarkAI/Docision-1.0"><img src="assets/badge-model.svg" alt="Hugging Face: Docision" height="28"></a>
-  <a href="https://huggingface.co/datasets/Immortal-Zhang/doc-decision-bench"><img src="assets/badge-benchmark.svg" alt="Benchmark: doc-decision-bench" height="28"></a>
+  <a href="https://huggingface.co/datasets/SoMarkAI/doc-decision-bench"><img src="assets/badge-benchmark.svg" alt="Benchmark: doc-decision-bench" height="28"></a>
 </p>
 
 ## 👀 超越文本的决策智能
@@ -32,9 +32,9 @@ Docision 将不同的文档任务统一为一种简单的交互方式：Your Doc
 
 <div align="center">
 
-<table align="center" border="1" cellspacing="0" cellpadding="8" style="border-collapse: collapse; border: 1px solid #888;">
+<table width="100%" align="center" border="1" cellspacing="0" cellpadding="8" style="width: 100%; border-collapse: collapse; border: 1px solid #888;">
   <thead><tr><th width="33%" style="border: 1px solid #888; text-align: center;" align="center">Benchmark</th><th width="33%" style="border: 1px solid #888; text-align: center;" align="center">链接</th><th width="34%" style="border: 1px solid #888; text-align: center;" align="center">数量</th></tr></thead>
-  <tbody><tr><td style="border: 1px solid #888; text-align: center;" align="center">doc-decision-bench</td><td style="border: 1px solid #888; text-align: center;" align="center">🤗 <a href="https://huggingface.co/datasets/Immortal-Zhang/doc-decision-bench">Hugging Face</a></td><td style="border: 1px solid #888; text-align: center;" align="center">5,234条文档数据</td></tr></tbody>
+  <tbody><tr><td style="border: 1px solid #888; text-align: center;" align="center">doc-decision-bench</td><td style="border: 1px solid #888; text-align: center;" align="center">🤗 <a href="https://huggingface.co/datasets/SoMarkAI/doc-decision-bench">Hugging Face</a></td><td style="border: 1px solid #888; text-align: center;" align="center">5,234条文档数据</td></tr></tbody>
 </table>
 
 </div>
@@ -52,7 +52,7 @@ Docision 将不同的文档任务统一为一种简单的交互方式：Your Doc
 
 <div align="center">
 
-<table align="center" border="1" cellspacing="0" cellpadding="8" style="border-collapse: collapse; border: 1px solid #888;">
+<table width="100%" align="center" border="1" cellspacing="0" cellpadding="8" style="width: 100%; border-collapse: collapse; border: 1px solid #888;">
   <thead><tr><th width="50%" style="border: 1px solid #888; text-align: center;" align="center">试试我们的模型</th><th width="50%" style="border: 1px solid #888; text-align: center;" align="center">链接</th></tr></thead>
   <tbody><tr><td style="border: 1px solid #888; text-align: center;" align="center">Docision-1.0</td><td style="border: 1px solid #888; text-align: center;" align="center">🤗 <a href="https://huggingface.co/SoMarkAI/Docision-1.0">Hugging Face</a></td></tr></tbody>
 </table>
@@ -68,10 +68,10 @@ cd docision
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install -e '.' huggingface_hub
-hf download SoMarkAI/Docision-1.0 --local-dir models/docision-1.0
+hf download SoMarkAI/Docision-1.0 --local-dir models/Docision-1.0
 
 CUDA_VISIBLE_DEVICES=0 python demo_docision.py \
-  --model models/docision-1.0 \
+  --model models/Docision-1.0 \
   --input examples/multiple.json \
   --output outputs/document-decisions.json
 ```
@@ -124,4 +124,4 @@ docision mcp --api-url http://127.0.0.1:7860 \
 
 桥接连接已启动的 Docision 模型服务。文档和导出路径位于 MCP 主机，模型运行在服务主机上。前置配置与远端 GPU 连接方式见 [MCP 接入说明](docs/python-package.zh-CN.md#mcp)。
 
-<p align="center"><a href="LICENSE">Apache-2.0</a></p>
+<p align="center"><a href="LICENSE">Apache-2.0</a> — 基于 Apache 2.0 的自定义许可证。</p>

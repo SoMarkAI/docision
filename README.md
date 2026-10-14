@@ -7,7 +7,7 @@
 <p align="center"><b>English</b> &nbsp;  &nbsp; <a href="README.zh-CN.md">简体中文</a></p>
 <p align="center">
   <a href="https://huggingface.co/SoMarkAI/Docision-1.0"><img src="assets/badge-model.svg" alt="Hugging Face: Docision" height="28"></a>
-  <a href="https://huggingface.co/datasets/Immortal-Zhang/doc-decision-bench"><img src="assets/badge-benchmark.svg" alt="Benchmark: doc-decision-bench" height="28"></a>
+  <a href="https://huggingface.co/datasets/SoMarkAI/doc-decision-bench"><img src="assets/badge-benchmark.svg" alt="Benchmark: doc-decision-bench" height="28"></a>
 </p>
 
 ## 👀 Decision intelligence beyond text
@@ -31,9 +31,9 @@ Docision unifies document tasks through one simple interaction: Your Document. Y
 
 <div align="center">
 
-<table align="center" border="1" cellspacing="0" cellpadding="8" style="border-collapse: collapse; border: 1px solid #888;">
+<table width="100%" align="center" border="1" cellspacing="0" cellpadding="8" style="width: 100%; border-collapse: collapse; border: 1px solid #888;">
   <thead><tr><th width="33%" style="border: 1px solid #888; text-align: center;" align="center">Benchmark</th><th width="33%" style="border: 1px solid #888; text-align: center;" align="center">Link</th><th width="34%" style="border: 1px solid #888; text-align: center;" align="center">Count</th></tr></thead>
-  <tbody><tr><td style="border: 1px solid #888; text-align: center;" align="center">doc-decision-bench</td><td style="border: 1px solid #888; text-align: center;" align="center">🤗 <a href="https://huggingface.co/datasets/Immortal-Zhang/doc-decision-bench">Hugging Face</a></td><td style="border: 1px solid #888; text-align: center;" align="center">5,234 document records</td></tr></tbody>
+  <tbody><tr><td style="border: 1px solid #888; text-align: center;" align="center">doc-decision-bench</td><td style="border: 1px solid #888; text-align: center;" align="center">🤗 <a href="https://huggingface.co/datasets/SoMarkAI/doc-decision-bench">Hugging Face</a></td><td style="border: 1px solid #888; text-align: center;" align="center">5,234 document records</td></tr></tbody>
 </table>
 
 </div>
@@ -51,7 +51,7 @@ Covers **document understanding and decisions, and cross-industry classification
 
 <div align="center">
 
-<table align="center" border="1" cellspacing="0" cellpadding="8" style="border-collapse: collapse; border: 1px solid #888;">
+<table width="100%" align="center" border="1" cellspacing="0" cellpadding="8" style="width: 100%; border-collapse: collapse; border: 1px solid #888;">
   <thead><tr><th width="50%" style="border: 1px solid #888; text-align: center;" align="center">Try our model</th><th width="50%" style="border: 1px solid #888; text-align: center;" align="center">Link</th></tr></thead>
   <tbody><tr><td style="border: 1px solid #888; text-align: center;" align="center">Docision-1.0</td><td style="border: 1px solid #888; text-align: center;" align="center">🤗 <a href="https://huggingface.co/SoMarkAI/Docision-1.0">Hugging Face</a></td></tr></tbody>
 </table>
@@ -68,10 +68,10 @@ cd docision
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install -e '.' huggingface_hub
-hf download SoMarkAI/Docision-1.0 --local-dir models/docision-1.0
+hf download SoMarkAI/Docision-1.0 --local-dir models/Docision-1.0
 
 CUDA_VISIBLE_DEVICES=0 python demo_docision.py \
-  --model models/docision-1.0 \
+  --model models/Docision-1.0 \
   --input examples/multiple.json \
   --output outputs/document-decisions.json
 ```
@@ -124,4 +124,4 @@ docision mcp --api-url http://127.0.0.1:7860 \
 
 The bridge connects to a running Docision model service. Document and export paths belong to the MCP host; the model runs on the service host. See the [MCP setup instructions](docs/python-package.md#mcp) for prerequisites and remote GPU connections.
 
-<p align="center"><a href="LICENSE">Apache-2.0</a></p>
+<p align="center"><a href="LICENSE">Apache-2.0</a> — A custom license based on Apache 2.0.</p>
