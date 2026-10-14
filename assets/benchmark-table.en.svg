@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="180" viewBox="0 0 1200 180" role="img">
 <title>Benchmark | Link | Count: doc-decision-bench | 🤗 Hugging Face | 5,234 document records</title>
-<rect x="1" y="1" width="1198" height="178" fill="#ffffff" stroke="#d0d7de" stroke-width="2"/>
+<rect x="1" y="1" width="1198" height="178" fill="none" stroke="#d0d7de" stroke-width="2"/>
 <path d="M1 80 H1199" stroke="#d0d7de" stroke-width="2"/>
 <path d="M400.0 1 V179" stroke="#d0d7de" stroke-width="2"/>
 <path d="M800.0 1 V179" stroke="#d0d7de" stroke-width="2"/>
