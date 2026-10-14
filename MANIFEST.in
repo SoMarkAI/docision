@@ -11,7 +11,7 @@ include assets/docision-hero.svg
 include assets/docision-wordmark.gif
 include assets/badge-benchmark.svg
 include assets/badge-model.svg
-include assets/somark-logo.svg
+include assets/*-table.*.svg
 include examples/readme.md
 include examples/readme.zh-CN.md
 include examples/multiple.json

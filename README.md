@@ -30,7 +30,7 @@ Docision unifies document tasks through one simple interaction: Your Document. Y
 ## 🎯 Document decisions beyond a 27B model—higher speed, higher accuracy.
 
 <p align="center">
-  <a href="https://huggingface.co/datasets/SoMarkAI/doc-decision-bench"><img src="assets/benchmark-table.en.svg" alt="doc-decision-bench: 5,234 document records. Open on Hugging Face." width="100%"></a>
+  <a href="https://huggingface.co/datasets/SoMarkAI/doc-decision-bench"><img src="assets/benchmark-table.en.svg#gh-light-mode-only" alt="doc-decision-bench: 5,234 document records. Open on Hugging Face." width="100%"><img src="assets/benchmark-table.en.dark.svg#gh-dark-mode-only" alt="doc-decision-bench: 5,234 document records. Open on Hugging Face." width="100%"></a>
 </p>
 
 Covers **document understanding and decisions, and cross-industry classification**, with higher speed and quality.
@@ -45,7 +45,7 @@ Covers **document understanding and decisions, and cross-industry classification
 ## 🤗 Find our model here
 
 <p align="center">
-  <a href="https://huggingface.co/SoMarkAI/Docision-1.0"><img src="assets/model-table.en.svg" alt="Docision-1.0: Open the model on Hugging Face." width="100%"></a>
+  <a href="https://huggingface.co/SoMarkAI/Docision-1.0"><img src="assets/model-table.en.svg#gh-light-mode-only" alt="Docision-1.0: Open the model on Hugging Face." width="100%"><img src="assets/model-table.en.dark.svg#gh-dark-mode-only" alt="Docision-1.0: Open the model on Hugging Face." width="100%"></a>
 </p>
 
 <a id="start"></a>
