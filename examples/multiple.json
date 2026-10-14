@@ -1,0 +1,93 @@
+{
+  "image": "validation-table.jpg",
+  "questions": [
+    {
+      "id": "Docision:c5bc6f4e69f7b8bf_r0q03:zh",
+      "language": "zh",
+      "question": "表中哪些项目的P值均标为“< 0.001”？",
+      "candidates": {
+        "A": "中度营养不良与重度营养不良",
+        "B": "重度营养不良与治疗史",
+        "C": "诊断时分期与治疗史",
+        "D": "中度营养不良与诊断时分期"
+      },
+      "label": "B"
+    },
+    {
+      "id": "Docision:c5bc6f4e69f7b8bf_r0q03:en",
+      "language": "en",
+      "question": "Which items in the table have P-values marked “< 0.001”?",
+      "candidates": {
+        "A": "Moderately malnourished and severely malnourished",
+        "B": "Severely malnourished and treatment history",
+        "C": "Stage at diagnosis and treatment history",
+        "D": "Moderately malnourished and stage at diagnosis"
+      },
+      "label": "B"
+    },
+    {
+      "id": "Docision:c5bc6f4e69f7b8bf_r0q02:zh",
+      "language": "zh",
+      "question": "诊断时分期（Stage at Diagnosis）这一行采用什么作为参照？",
+      "candidates": {
+        "A": "I期和II期",
+        "B": "新诊断",
+        "C": "营养良好"
+      },
+      "label": "A"
+    },
+    {
+      "id": "Docision:c5bc6f4e69f7b8bf_r0q02:en",
+      "language": "en",
+      "question": "What is used as the reference in the Stage at Diagnosis row?",
+      "candidates": {
+        "A": "Stages I and II",
+        "B": "Newly diagnosed",
+        "C": "Well-nourished"
+      },
+      "label": "A"
+    },
+    {
+      "id": "Docision:c5bc6f4e69f7b8bf_r0q00:zh",
+      "language": "zh",
+      "question": "表中重度营养不良（Severely malnourished）的RR是多少？",
+      "candidates": {
+        "A": "3.4",
+        "B": "4.8",
+        "C": "2.1"
+      },
+      "label": "A"
+    },
+    {
+      "id": "Docision:c5bc6f4e69f7b8bf_r0q00:en",
+      "language": "en",
+      "question": "What is the RR for severely malnourished in the table?",
+      "candidates": {
+        "A": "3.4",
+        "B": "4.8",
+        "C": "2.1"
+      },
+      "label": "A"
+    },
+    {
+      "id": "Docision:c5bc6f4e69f7b8bf_r0q04:zh",
+      "language": "zh",
+      "question": "中度营养不良与诊断时分期的95% CI是否相同？",
+      "candidates": {
+        "A": "不同",
+        "B": "相同"
+      },
+      "label": "A"
+    },
+    {
+      "id": "Docision:c5bc6f4e69f7b8bf_r0q04:en",
+      "language": "en",
+      "question": "Are the 95% CIs for moderately malnourished and stage at diagnosis the same?",
+      "candidates": {
+        "A": "Different",
+        "B": "The same"
+      },
+      "label": "A"
+    }
+  ]
+}

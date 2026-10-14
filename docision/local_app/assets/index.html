@@ -1,0 +1,88 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Docision · 本地文档工作台</title>
+<style>
+:root{font-family:system-ui,sans-serif;color:#172a38;background:#f3f6f8}*{box-sizing:border-box}body{max-width:1150px;margin:auto;padding:32px}header{margin-bottom:26px}h1{font-size:34px;margin:8px 0}.tag{color:#087366;font-size:13px;font-weight:650}p,small{color:#566a77;line-height:1.6}.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.card{background:white;border:1px solid #dce5eb;border-radius:16px;padding:24px;margin-bottom:20px}h2{font-size:18px;margin:0 0 18px}label{display:block;font-size:14px;margin:14px 0 6px}input,select,textarea,button{font:inherit;border:1px solid #bdcdd5;border-radius:8px;padding:10px;width:100%}textarea{resize:vertical}button{background:#087d71;color:white;border:0;cursor:pointer;margin-top:12px}button:disabled{opacity:.5;cursor:wait}.secondary{background:#e9f0f4;color:#24424d}#status{white-space:pre-wrap;padding:12px;background:#eaf3f2;border-radius:8px;overflow-wrap:anywhere}.results{overflow:auto}table{width:100%;border-collapse:collapse;font-size:14px}td,th{text-align:left;padding:12px;border-bottom:1px solid #e1e8ed;vertical-align:top}td{min-width:110px}td:first-child{overflow-wrap:anywhere;max-width:220px}th{color:#617482}progress{width:100%;accent-color:#087d71}#preview{max-width:100%;max-height:360px;object-fit:contain}.actions{display:flex;gap:12px}.actions button{width:auto}#questions{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}.question-card{border:1px solid #dce5eb;border-radius:10px;padding:16px;margin-bottom:14px}.question-card.has-errors{border-color:#b42318}.question-card [aria-invalid="true"]{border:2px solid #b42318;background:#fff5f4}.field-error{color:#b42318;font-size:13px;line-height:1.5;margin:6px 0;white-space:pre-wrap}.field-error[hidden]{display:none}textarea:focus{outline:3px solid #82b9ef;outline-offset:2px}.question-heading{display:flex;align-items:center;justify-content:space-between;gap:12px}.question-heading button{width:auto;margin:0;padding:6px 12px}.question-heading h3{font-size:16px;margin:0}.question-card label{margin-top:10px}summary{cursor:pointer;color:#087d71} @media(max-width:760px){body{padding:16px}.grid{grid-template-columns:1fr}}
+</style>
+<header><span class="tag">本机运行 · 本地模型 · 文件不上传云端</span><h1>Docision</h1><p>一份文档，多种判断。选择场景，放入文件，把结果带回你的工作。</p></header>
+<section class="card"><h2>1 · 加载本地模型</h2><label for="model">完整模型目录</label><input id="model" placeholder="例如 D:\models\docision-1.0 或 /data/models/docision-1.0"><label for="device">推理设备</label><select id="device"><option value="cuda:0">NVIDIA GPU 0</option><option value="cuda:1">NVIDIA GPU 1</option><option value="cpu">CPU（较慢）</option></select><label for="numerics">计算模式</label><select id="numerics"><option value="native">标准模式（默认，逐题推理）</option><option value="stable">加速兼容模式（可启用缓存，结果可能与标准模式不同）</option></select><button id="load">加载模型</button><small>启动后加载一次。模型目录需要包含配置、处理器和完整权重。</small></section>
+<section class="card"><h2>2 · 设置问题</h2><p>每个问题独立设置候选答案。上传一次，每一页会回答全部问题。</p><div id="questions"></div><button id="addQuestion" class="secondary">＋ 添加问题</button><small>最多 20 个问题，每题 2–26 个候选答案。自定义模板保存在当前浏览器。</small></section>
+<section class="card"><h2>3 · 放入文件</h2><input id="files" type="file" accept="image/png,image/jpeg,image/webp,.pdf" multiple><p>支持 PNG、JPEG、WebP 和 PDF，可多选或拖入。单文件最多 25 MB，单个 PDF 最多 100 页，逐页回答全部问题，按“文件 / 页码 / 问题”输出结果。</p><label><input id="prefixCache" type="checkbox" style="width:auto" disabled> 启用同页缓存与批量（需加速兼容模式）</label><div class="actions"><button id="run" disabled>开始判断</button><button id="stop" disabled class="secondary">当前文件完成后停止</button></div><progress id="progress" value="0" max="1"></progress><p id="status" role="status" aria-live="polite">请先加载本地模型。</p></section>
+<section class="card"><h2>4 · 查看与导出</h2><div class="grid"><div><label for="previewSelect">原文件预览</label><select id="previewSelect"></select><img id="preview" alt="所选文档图片" hidden><p id="pdfNote" hidden>PDF 按原页码输出。<a id="pdfLink" target="_blank" rel="noopener">在浏览器打开原 PDF</a></p></div><p>判断针对页面可见内容。候选概率用于比较选项，不代表经过校准的正确率。可填写人工修正，导出时会保留原始判断。</p></div><div class="actions"><button id="json" class="secondary">导出 JSON</button><button id="csv" class="secondary">导出 CSV</button></div><div class="results"><table><thead><tr><th>文件 / 页码</th><th>问题</th><th>判断</th><th>候选概率</th><th>人工修正</th></tr></thead><tbody id="rows"></tbody></table></div></section>
+<script>
+const $=id=>document.getElementById(id),token=location.hash.slice(1);let templates={},rows=[],ready=false,busy=false,scoring=false,stop=false,previewURL;
+const status=s=>$('status').textContent=s;
+async function api(path,body){const r=await fetch('/api/v1/'+path,{method:body?'POST':'GET',headers:{'X-Docision-Token':token,'Content-Type':'application/json'},body:body?JSON.stringify(body):undefined});const data=await r.json();if(!r.ok)throw Error(data.error?.message||data.error||r.statusText);return data;}
+let nextQuestionId=0,validationActive=false;
+function questionCards(){return Array.from($('questions').children);}
+function controls(){$('numerics').disabled=busy||ready;$('prefixCache').disabled=busy||!ready||$('numerics').value!=='stable';if($('numerics').value!=='stable')$('prefixCache').checked=false;for(const id of ['load','files','model','device'])$(id).disabled=busy;
+for(const el of $('questions').querySelectorAll('button,select,textarea'))el.disabled=busy;
+questionCards().forEach(card=>card.querySelector('.remove').disabled=busy||questionCards().length===1);
+$('addQuestion').disabled=busy||questionCards().length>=20;$('run').disabled=busy||!ready;$('stop').disabled=!busy||!scoring;
+$('json').disabled=busy||!rows.length;$('csv').disabled=busy||!rows.length;}
+function renumber(){questionCards().forEach((card,i)=>{card.querySelector('h3').textContent=`问题 ${i+1}`;card.querySelector('.remove').setAttribute('aria-label',`删除问题 ${i+1}`);if(card.dataset.validated)inspectQuestion(card,i);});controls();refreshValidationStatus();}
+function fillTemplates(card,selected){const select=card.querySelector('select');select.replaceChildren();for(const name of Object.keys(templates))select.add(new Option(name,name));if(selected in templates)select.value=selected;}
+function addQuestion(selected='自定义判断'){
+if(questionCards().length>=20)return;
+const id=++nextQuestionId,card=document.createElement('div');card.className='question-card';
+card.innerHTML=`<div class="question-heading"><h3></h3><button type="button" class="remove secondary">删除</button></div><label for="template-${id}">场景</label><select id="template-${id}"></select><label for="question-${id}">你的问题</label><textarea id="question-${id}" class="question-text" rows="2" aria-describedby="question-error-${id}"></textarea><p id="question-error-${id}" class="field-error" hidden></p><label for="candidates-${id}">候选答案（每行一个）</label><textarea id="candidates-${id}" class="candidate-text" rows="3" aria-describedby="candidates-error-${id}"></textarea><p id="candidates-error-${id}" class="field-error" hidden></p><button type="button" class="save secondary">保存此题为模板</button>`;
+const select=card.querySelector('select'),question=card.querySelector('.question-text'),candidates=card.querySelector('.candidate-text');
+function useTemplate(){const t=templates[select.value];if(t){question.value=t[0];candidates.value=t[1].join('\n');if(card.dataset.validated){inspectQuestion(card,questionCards().indexOf(card));refreshValidationStatus();}}}
+fillTemplates(card,selected);useTemplate();select.onchange=useTemplate;
+card.querySelector('.remove').onclick=()=>{if(questionCards().length>1){card.remove();renumber();}};
+card.querySelector('.save').onclick=()=>{try{const values=validateQuestions([card]);if(!values)return;const value=values[0];const name=prompt('模板名称');if(!name||!name.trim())return;const custom=JSON.parse(localStorage.getItem('docision.templates')||'{}');Object.defineProperty(custom,name.trim(),{value:[value.question,value.candidates],enumerable:true,configurable:true,writable:true});localStorage.setItem('docision.templates',JSON.stringify(custom));templates={...templates,...custom};questionCards().forEach(c=>fillTemplates(c,c===card?name.trim():c.querySelector('select').value));status('模板已保存在当前浏览器。');}catch(e){status(e.message);}};
+for(const field of [question,candidates])field.oninput=()=>{if(card.dataset.validated){inspectQuestion(card,questionCards().indexOf(card));refreshValidationStatus();}};
+$('questions').append(card);renumber();}
+function inspectQuestion(card,index){
+const questionField=card.querySelector('.question-text'),candidateField=card.querySelector('.candidate-text');
+const question=questionField.value.trim(),lines=candidateField.value.split('\n').map((text,i)=>({text:text.trim(),line:i+1})).filter(x=>x.text),candidates=lines.map(x=>x.text);
+const questionErrors=[],candidateErrors=[];
+if(!question)questionErrors.push('问题文本为空，请填写你要判断的问题。');
+else if(questionField.value.length>8000)questionErrors.push(`问题文本共 ${questionField.value.length} 字，超过 8000 字，请缩短。`);
+if(candidates.length<2)candidateErrors.push(`候选答案只有 ${candidates.length} 个，至少需要 2 个非空答案，每行一个。`);
+if(candidates.length>26)candidateErrors.push(`候选答案有 ${candidates.length} 个，最多允许 26 个，请删除多余答案。`);
+const seen=new Map();
+for(const item of lines){
+if(seen.has(item.text))candidateErrors.push(`第 ${item.line} 行与第 ${seen.get(item.text)} 行重复（“${item.text.slice(0,40)}${item.text.length>40?'…':''}”），请修改或删除重复答案。`);
+else seen.set(item.text,item.line);
+if(item.text.length>2000)candidateErrors.push(`第 ${item.line} 行候选答案共 ${item.text.length} 字，超过 2000 字，请缩短。`);
+}
+card.dataset.validated='true';
+const errors=[];
+for(const [field,messages] of [[questionField,questionErrors],[candidateField,candidateErrors]]){
+const hint=$(field.getAttribute('aria-describedby'));hint.textContent=messages.map(message=>`问题 ${index+1} · ${message}`).join('\n');hint.hidden=!messages.length;
+if(messages.length){field.setAttribute('aria-invalid','true');errors.push({field,message:hint.textContent});}else field.removeAttribute('aria-invalid');
+}
+card.classList.toggle('has-errors',errors.length>0);
+return {value:{question_id:`q${index+1}`,question,candidates},errors};
+}
+function refreshValidationStatus(){if(!validationActive)return;const invalid=$('questions').querySelectorAll('[aria-invalid="true"]');status(invalid.length?`有 ${$('questions').querySelectorAll('.has-errors').length} 道题、${invalid.length} 处输入需要修改，请查看红色提示。`:'输入问题已修正，可以重新点击“开始判断”。');}
+function validateQuestions(cards=questionCards()){
+const checked=cards.map(card=>inspectQuestion(card,questionCards().indexOf(card))),errors=checked.flatMap(item=>item.errors);
+if(errors.length){validationActive=true;refreshValidationStatus();const first=errors[0].field;first.scrollIntoView({behavior:'instant',block:'center'});first.focus({preventScroll:true});return null;}
+validationActive=false;return checked.map(item=>item.value);
+}
+$('addQuestion').onclick=()=>addQuestion();
+$('load').onclick=async()=>{busy=true;controls();status('正在加载本地模型，请稍候……');try{const r=await api('model',{model:$('model').value,device:$('device').value,numerics:$('numerics').value});ready=true;localStorage.setItem('docision.model',$('model').value);status(r.message);}catch(e){status(e.message);}finally{busy=false;controls();}};
+function preview(){if(previewURL)URL.revokeObjectURL(previewURL);const f=$('files').files[Number($('previewSelect').value)];if(!f)return;previewURL=URL.createObjectURL(f);const pdf=f.name.toLowerCase().endsWith('.pdf');$('preview').hidden=pdf;$('pdfNote').hidden=!pdf;if(pdf)$('pdfLink').href=previewURL;else $('preview').src=previewURL;}
+$('files').onchange=()=>{$('previewSelect').replaceChildren();Array.from($('files').files).forEach((f,i)=>$('previewSelect').add(new Option(f.name,i)));preview();};$('previewSelect').onchange=preview;
+function render(){ $('rows').replaceChildren();rows.forEach(row=>{const tr=document.createElement('tr');for(const value of [row.file+' · '+row.page,(row.question_id||'')+' · '+row.question,row.error||row.result?.decision?.text||'',(row.result?.candidates||[]).map(c=>c.text+': '+(100*c.probability).toFixed(2)+'%').join('\n')]){const td=document.createElement('td');td.textContent=value;td.style.whiteSpace='pre-wrap';tr.append(td);}const td=document.createElement('td'),input=document.createElement('input');input.value=row.correction||'';input.placeholder='可选';input.setAttribute('aria-label',row.file+' 第 '+row.page+' 页 '+row.question_id+' 人工修正');input.oninput=()=>row.correction=input.value;td.append(input);tr.append(td);$('rows').append(tr);});}
+function asBase64(file){return new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(r.result.split(',')[1]);r.onerror=()=>reject(Error('无法读取文件'));r.readAsDataURL(file);});}
+$('stop').onclick=()=>{stop=true;status('当前文件仍在处理，完成后停止。');};
+$('run').onclick=async()=>{const files=Array.from($('files').files);if(!files.length)return status('请选择文件。');const questions=validateQuestions();if(!questions)return;busy=true;scoring=true;stop=false;rows=[];render();controls();$('progress').max=files.length;$('progress').value=0;try{for(let i=0;i<files.length;i++){if(stop)break;const f=files[i];status(`正在处理 ${i+1}/${files.length}：${f.name}。${questions.length} 个问题，PDF 会逐页回答全部问题，请等待。`);try{if(f.size>25*1024*1024)throw Error('文件超过 25 MB');const r=await api('score',{name:f.name,data:await asBase64(f),questions,prefix_cache:$('prefixCache').checked});rows.push(...r.rows);}catch(e){rows.push(...questions.map(q=>({file:f.name,page:1,...q,error:e.message,correction:''}))); }render();$('progress').value=i+1;}const errors=rows.filter(r=>r.error).length;status(`${stop?'已停止':'处理结束'}：${rows.length} 条记录，${errors} 条失败。可以导出结果；失败文件可重新选择后重试。`);}finally{busy=false;scoring=false;controls();}};
+function download(text,name,type){const url=URL.createObjectURL(new Blob([text],{type})),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
+$('json').onclick=()=>download(JSON.stringify(rows,null,2),'docision-results.json','application/json');$('csv').onclick=async()=>{try{const r=await api('csv',{rows});download(r.csv,'docision-results.csv','text/csv;charset=utf-8');}catch(e){status(e.message);}};
+controls();
+(async()=>{try{
+const [availableTemplates,modelState]=await Promise.all([api('templates'),api('model')]);
+templates={...availableTemplates,...JSON.parse(localStorage.getItem('docision.templates')||'{}')};
+ready=Boolean(modelState.loaded);
+$('numerics').value=modelState.numerics||'native';
+$('model').value=ready?modelState.model:(localStorage.getItem('docision.model')||'');
+if(ready){
+const device=$('device');
+if(!Array.from(device.options).some(option=>option.value===modelState.device))device.add(new Option(modelState.device,modelState.device));
+device.value=modelState.device;
+status('模型已就绪，可以选择文件并开始判断。');
+}
+addQuestion('文件分类');controls();
+}catch(e){ready=false;controls();status(e.message);}})();
+</script></html>

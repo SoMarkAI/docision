@@ -1,0 +1,9 @@
+Docision
+
+Licensed under the Apache License, Version 2.0. See LICENSE.
+
+Qwen3-VL model reference:
+https://huggingface.co/Qwen/Qwen3-VL-4B-Instruct
+
+Model weights are distributed separately and retain their applicable licenses.
+Third-party dependencies retain their applicable licenses and notices.

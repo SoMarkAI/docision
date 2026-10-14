@@ -1,0 +1,21 @@
+.venv/
+.test-venv/
+.test-deps/
+.cache/
+__pycache__/
+*.pyc
+models/
+validation/
+.aris/
+.mcp-venv/
+.runtime/
+exports/
+profile_output/
+inputs/
+# Only reviewed, portable integration examples belong in source control.
+integrations/*/
+!integrations/examples/
+release-output/
+*.log
+.env
+.env.*

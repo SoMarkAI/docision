@@ -1,0 +1,34 @@
+include LICENSE NOTICE README.md README.zh-CN.md pyproject.toml
+recursive-include docision *.py *.html *.json
+recursive-include docs *.md
+prune deployment
+include deployment/THIRD_PARTY_NOTICES.md
+prune tests
+include demo_docision.py
+include assets/docision-benchmark-results.svg
+include assets/docision-benchmark-results.zh-cn.svg
+include assets/docision-hero.svg
+include assets/docision-wordmark.gif
+include assets/badge-benchmark.svg
+include assets/badge-model.svg
+include assets/somark-logo.svg
+include examples/readme.md
+include examples/readme.zh-CN.md
+include examples/multiple.json
+include examples/recorded-output.json
+include examples/service_client.py
+include examples/single.json
+include examples/validation-table.jpg
+include tests/check_sdist.py
+include tests/test_long_pdf_name.py
+include tests/browser_playground_regression.py
+prune .git
+prune build
+prune dist
+global-exclude __pycache__ *.py[cod] .DS_Store
+include tests/test_request_cache_compat.py
+include tests/test_functional_regressions.py
+
+include tests/test_evaluation_integrity.py
+include tests/conftest.py
+include tests/test_release_defaults.py

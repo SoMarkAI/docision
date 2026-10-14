@@ -1,0 +1,7 @@
+transformers==5.13.1
+torch==2.11.0
+torchvision==0.26.0
+accelerate==1.14.0
+safetensors==0.8.0
+Pillow>=10
+pypdfium2>=4.30,<6

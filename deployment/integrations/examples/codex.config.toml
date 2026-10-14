@@ -1,0 +1,5 @@
+[mcp_servers.docision]
+command = "/path/to/docision/deployment/.mcp-venv/bin/python"
+args = ["/path/to/docision/deployment/mcp_server.py", "--api-url", "http://127.0.0.1:7860", "--token-file", "/path/to/docision/deployment/.runtime/api-token", "--output-dir", "/path/to/docision/deployment/exports", "--allowed-root", "/path/to/documents"]
+startup_timeout_sec = 30
+tool_timeout_sec = 300

@@ -1,0 +1,13 @@
+{
+  "image": "validation-table.jpg",
+  "id": "Docision:c5bc6f4e69f7b8bf_r0q03:en",
+  "language": "en",
+  "question": "Which items in the table have P-values marked “< 0.001”?",
+  "candidates": {
+    "A": "Moderately malnourished and severely malnourished",
+    "B": "Severely malnourished and treatment history",
+    "C": "Stage at diagnosis and treatment history",
+    "D": "Moderately malnourished and stage at diagnosis"
+  },
+  "label": "B"
+}

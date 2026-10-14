@@ -1,0 +1,314 @@
+[
+  {
+    "id": "Docision:c5bc6f4e69f7b8bf_r0q03:zh",
+    "backend": "transformers",
+    "model_family": "qwen3_vl",
+    "mode": "causal",
+    "projection": "full",
+    "numerics": "native",
+    "candidates": [
+      {
+        "label": "A",
+        "text": "中度营养不良与重度营养不良",
+        "probability": 0.769087016582489
+      },
+      {
+        "label": "B",
+        "text": "重度营养不良与治疗史",
+        "probability": 0.19445563852787018
+      },
+      {
+        "label": "C",
+        "text": "诊断时分期与治疗史",
+        "probability": 0.015961891040205956
+      },
+      {
+        "label": "D",
+        "text": "中度营养不良与诊断时分期",
+        "probability": 0.020495474338531494
+      }
+    ],
+    "decision": {
+      "label": "A",
+      "text": "中度营养不良与重度营养不良",
+      "probability": 0.769087016582489,
+      "index": 0,
+      "tied_labels": [
+        "A"
+      ],
+      "tie_policy": "first_in_input_order"
+    },
+    "probability_sum": 1.0000000204890966,
+    "prompt_tokens": 126,
+    "num_cached_tokens": 0,
+    "cache_note": "No KV reuse."
+  },
+  {
+    "id": "Docision:c5bc6f4e69f7b8bf_r0q03:en",
+    "backend": "transformers",
+    "model_family": "qwen3_vl",
+    "mode": "causal",
+    "projection": "full",
+    "numerics": "native",
+    "candidates": [
+      {
+        "label": "A",
+        "text": "Moderately malnourished and severely malnourished",
+        "probability": 0.5613759160041809
+      },
+      {
+        "label": "B",
+        "text": "Severely malnourished and treatment history",
+        "probability": 0.43720000982284546
+      },
+      {
+        "label": "C",
+        "text": "Stage at diagnosis and treatment history",
+        "probability": 0.000843994552269578
+      },
+      {
+        "label": "D",
+        "text": "Moderately malnourished and stage at diagnosis",
+        "probability": 0.0005800684448331594
+      }
+    ],
+    "decision": {
+      "label": "A",
+      "text": "Moderately malnourished and severely malnourished",
+      "probability": 0.5613759160041809,
+      "index": 0,
+      "tied_labels": [
+        "A"
+      ],
+      "tie_policy": "first_in_input_order"
+    },
+    "probability_sum": 0.9999999888241291,
+    "prompt_tokens": 132,
+    "num_cached_tokens": 0,
+    "cache_note": "No KV reuse."
+  },
+  {
+    "id": "Docision:c5bc6f4e69f7b8bf_r0q02:zh",
+    "backend": "transformers",
+    "model_family": "qwen3_vl",
+    "mode": "causal",
+    "projection": "full",
+    "numerics": "native",
+    "candidates": [
+      {
+        "label": "A",
+        "text": "I期和II期",
+        "probability": 0.9999997615814209
+      },
+      {
+        "label": "B",
+        "text": "新诊断",
+        "probability": 2.3823690753488336e-07
+      },
+      {
+        "label": "C",
+        "text": "营养良好",
+        "probability": 1.8370858612115626e-08
+      }
+    ],
+    "decision": {
+      "label": "A",
+      "text": "I期和II期",
+      "probability": 0.9999997615814209,
+      "index": 0,
+      "tied_labels": [
+        "A"
+      ],
+      "tie_policy": "first_in_input_order"
+    },
+    "probability_sum": 1.000000018189187,
+    "prompt_tokens": 101,
+    "num_cached_tokens": 0,
+    "cache_note": "No KV reuse."
+  },
+  {
+    "id": "Docision:c5bc6f4e69f7b8bf_r0q02:en",
+    "backend": "transformers",
+    "model_family": "qwen3_vl",
+    "mode": "causal",
+    "projection": "full",
+    "numerics": "native",
+    "candidates": [
+      {
+        "label": "A",
+        "text": "Stages I and II",
+        "probability": 0.9999736547470093
+      },
+      {
+        "label": "B",
+        "text": "Newly diagnosed",
+        "probability": 2.4300190489157103e-05
+      },
+      {
+        "label": "C",
+        "text": "Well-nourished",
+        "probability": 1.9946812699345173e-06
+      }
+    ],
+    "decision": {
+      "label": "A",
+      "text": "Stages I and II",
+      "probability": 0.9999736547470093,
+      "index": 0,
+      "tied_labels": [
+        "A"
+      ],
+      "tie_policy": "first_in_input_order"
+    },
+    "probability_sum": 0.9999999496187684,
+    "prompt_tokens": 97,
+    "num_cached_tokens": 0,
+    "cache_note": "No KV reuse."
+  },
+  {
+    "id": "Docision:c5bc6f4e69f7b8bf_r0q00:zh",
+    "backend": "transformers",
+    "model_family": "qwen3_vl",
+    "mode": "causal",
+    "projection": "full",
+    "numerics": "native",
+    "candidates": [
+      {
+        "label": "A",
+        "text": "3.4",
+        "probability": 0.893166184425354
+      },
+      {
+        "label": "B",
+        "text": "4.8",
+        "probability": 0.00016037709428928792
+      },
+      {
+        "label": "C",
+        "text": "2.1",
+        "probability": 0.10667349398136139
+      }
+    ],
+    "decision": {
+      "label": "A",
+      "text": "3.4",
+      "probability": 0.893166184425354,
+      "index": 0,
+      "tied_labels": [
+        "A"
+      ],
+      "tie_policy": "first_in_input_order"
+    },
+    "probability_sum": 1.0000000555010047,
+    "prompt_tokens": 104,
+    "num_cached_tokens": 0,
+    "cache_note": "No KV reuse."
+  },
+  {
+    "id": "Docision:c5bc6f4e69f7b8bf_r0q00:en",
+    "backend": "transformers",
+    "model_family": "qwen3_vl",
+    "mode": "causal",
+    "projection": "full",
+    "numerics": "native",
+    "candidates": [
+      {
+        "label": "A",
+        "text": "3.4",
+        "probability": 0.9999141693115234
+      },
+      {
+        "label": "B",
+        "text": "4.8",
+        "probability": 2.7534088076208718e-05
+      },
+      {
+        "label": "C",
+        "text": "2.1",
+        "probability": 5.8289660955779254e-05
+      }
+    ],
+    "decision": {
+      "label": "A",
+      "text": "3.4",
+      "probability": 0.9999141693115234,
+      "index": 0,
+      "tied_labels": [
+        "A"
+      ],
+      "tie_policy": "first_in_input_order"
+    },
+    "probability_sum": 0.9999999930605554,
+    "prompt_tokens": 99,
+    "num_cached_tokens": 0,
+    "cache_note": "No KV reuse."
+  },
+  {
+    "id": "Docision:c5bc6f4e69f7b8bf_r0q04:zh",
+    "backend": "transformers",
+    "model_family": "qwen3_vl",
+    "mode": "causal",
+    "projection": "full",
+    "numerics": "native",
+    "candidates": [
+      {
+        "label": "A",
+        "text": "不同",
+        "probability": 0.9999972581863403
+      },
+      {
+        "label": "B",
+        "text": "相同",
+        "probability": 2.726470256675384e-06
+      }
+    ],
+    "decision": {
+      "label": "A",
+      "text": "不同",
+      "probability": 0.9999972581863403,
+      "index": 0,
+      "tied_labels": [
+        "A"
+      ],
+      "tie_policy": "first_in_input_order"
+    },
+    "probability_sum": 0.999999984656597,
+    "prompt_tokens": 91,
+    "num_cached_tokens": 0,
+    "cache_note": "No KV reuse."
+  },
+  {
+    "id": "Docision:c5bc6f4e69f7b8bf_r0q04:en",
+    "backend": "transformers",
+    "model_family": "qwen3_vl",
+    "mode": "causal",
+    "projection": "full",
+    "numerics": "native",
+    "candidates": [
+      {
+        "label": "A",
+        "text": "Different",
+        "probability": 0.9999339580535889
+      },
+      {
+        "label": "B",
+        "text": "The same",
+        "probability": 6.605214002775028e-05
+      }
+    ],
+    "decision": {
+      "label": "A",
+      "text": "Different",
+      "probability": 0.9999339580535889,
+      "index": 0,
+      "tied_labels": [
+        "A"
+      ],
+      "tie_policy": "first_in_input_order"
+    },
+    "probability_sum": 1.0000000101936166,
+    "prompt_tokens": 94,
+    "num_cached_tokens": 0,
+    "cache_note": "No KV reuse."
+  }
+]
