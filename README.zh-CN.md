@@ -31,7 +31,11 @@ Docision 将不同的文档任务统一为一种简单的交互方式：Your Doc
 ## 🎯 文档决策，超越27B模型--更快的速度，更高的准确率。
 
 <p align="center">
-  <a href="https://huggingface.co/datasets/SoMarkAI/doc-decision-bench"><img src="assets/benchmark-table.zh-cn.svg#gh-light-mode-only" alt="doc-decision-bench：5,234 条文档数据，点击访问 Hugging Face" width="100%"><img src="assets/benchmark-table.zh-cn.dark.svg#gh-dark-mode-only" alt="doc-decision-bench：5,234 条文档数据，点击访问 Hugging Face" width="100%"></a>
+  <a href="https://huggingface.co/datasets/SoMarkAI/doc-decision-bench"><picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/benchmark-table.zh-cn.dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/benchmark-table.zh-cn.svg">
+    <img src="assets/benchmark-table.zh-cn.svg" alt="doc-decision-bench：5,234 条文档数据，点击访问 Hugging Face" width="100%">
+  </picture></a>
 </p>
 
 覆盖**文档理解与决策、跨行业分类**，更快的速度，更高的质量。
@@ -46,7 +50,11 @@ Docision 将不同的文档任务统一为一种简单的交互方式：Your Doc
 ## 🤗模型在这里
 
 <p align="center">
-  <a href="https://huggingface.co/SoMarkAI/Docision-1.0"><img src="assets/model-table.zh-cn.svg#gh-light-mode-only" alt="Docision-1.0：点击访问 Hugging Face 模型" width="100%"><img src="assets/model-table.zh-cn.dark.svg#gh-dark-mode-only" alt="Docision-1.0：点击访问 Hugging Face 模型" width="100%"></a>
+  <a href="https://huggingface.co/SoMarkAI/Docision-1.0"><picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/model-table.zh-cn.dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/model-table.zh-cn.svg">
+    <img src="assets/model-table.zh-cn.svg" alt="Docision-1.0：点击访问 Hugging Face 模型" width="100%">
+  </picture></a>
 </p>
 
 <a id="start"></a>
